@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Interactive Map with Hot Spots</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+        }
+        .hotspot-info {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Map with Hot Spots</h1>
+    <div id="map"></div>
+
+    <div id="info1" class="hotspot-info">
+        <h2>Location 1: New Delhi</h2>
+        <p>This is some information about New Delhi.</p>
+    </div>
+    <div id="info2" class="hotspot-info">
+        <h2>Location 2: Mumbai</h2>
+        <p>This is some information about Mumbai.</p>
+    </div>
+    <div id="info3" class="hotspot-info">
+        <h2>Location 3: Chennai</h2>
+        <p>This is some information about Chennai.</p>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Centered on India
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define the locations of the hot spots
+        var locations = [
+            {lat: 28.6139, lng: 77.2090, info: 'info1'}, // New Delhi
+            {lat: 19.0760, lng: 72.8777, info: 'info2'}, // Mumbai
+            {lat: 13.0827, lng: 80.2707, info: 'info3'}  // Chennai
+        ];
+
+        // Add markers and handle click events
+        locations.forEach(function(location) {
+            var marker = L.marker([location.lat, location.lng]).addTo(map);
+
+            marker.on('click', function() {
+                // Hide all info divs
+                document.querySelectorAll('.hotspot-info').forEach(function(div) {
+                    div.style.display = 'none';
+                });
+
+                // Show the clicked info div
+                document.getElementById(location.info).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
