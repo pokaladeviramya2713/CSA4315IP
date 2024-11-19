@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Information</title>
+    <style>
+        .college-info {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: black;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: red;
+        }
+
+        .highlight:hover {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our College</h1>
+    <form id="styleForm">
+        <input type="button" value="Change" onclick="changeStyle()">
+    </form>
+    <p id="collegeParagraph" class="college-info">
+        Welcome to <span class="highlight">Our College</span>. We offer a wide range of <span class="highlight">programs</span> and <span class="highlight">courses</span> designed to provide <span class="highlight">quality education</span> to our students. Our mission is to foster <span class="highlight">academic excellence</span> and <span class="highlight">personal growth</span>.
+    </p>
+
+    <script>
+        function changeStyle() {
+            var paragraph = document.getElementById('collegeParagraph');
+            paragraph.style.fontFamily = 'Courier New, Courier, monospace';
+            paragraph.style.fontSize = '20px';
+            paragraph.style.color = 'blue';
+        }
+    </script>
+</body>
+</html>
