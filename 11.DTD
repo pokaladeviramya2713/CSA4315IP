@@ -1,0 +1,8 @@
+<!DOCTYPE products [
+    <!ELEMENT products (product+)>
+    <!ELEMENT product (#PCDATA)>
+    <!ATTLIST product
+        partsno ID #REQUIRED
+        price CDATA "open"
+    >
+]>
