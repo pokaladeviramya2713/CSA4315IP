@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Flight Reservation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .flight-list, .booking-list {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flight-item, .booking-item {
+            margin-bottom: 20px;
+        }
+
+        .flight-item img, .booking-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .flight-item h3, .booking-item h3 {
+            margin: 10px 0 5px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for form submissions
+            document.getElementById('registerForm')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful registration
+                alert('Registration Successful!');
+                window.location.href = "#login";
+            });
+
+            document.getElementById('loginForm')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful login
+                alert('Login Successful!');
+                window.location.href = "#home";
+            });
+
+            document.getElementById('searchForm')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful search
+                document.getElementById('results').innerHTML = `
+                    <h2>Available Flights</h2>
+                    <div class="flight-item">
+                        <h3>Flight 1</h3>
+                        <p>Destination: Destination 1</p>
+                        <p>Date: Date 1</p>
+                        <p>Class: Class 1</p>
+                        <button onclick="window.location.href='#book'">Book Now</button>
+                    </div>
+                    <div class="flight-item">
+                        <h3>Flight 2</h3>
+                        <p>Destination: Destination 2</p>
+                        <p>Date: Date 2</p>
+                        <p>Class: Class 2</p>
+                        <button onclick="window.location.href='#book'">Book Now</button>
+                    </div>
+                    <!-- Add more flights as needed -->
+                `;
+            });
+
+            document.getElementById('bookingForm')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful booking
+                alert('Booking Successful!');
+                window.location.href = "#bookings";
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Online Flight Reservation System</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#search">Search Flights</a></li>
+                <li><a href="#bookings">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome to Our Flight Reservation System</h2>
+            <p>Book your flights with ease and convenience.</p>
+        </section>
+        <section id="register">
+            <h2>User Registration</h2>
+            <form id="registerForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <input type="submit" value="Register">
+            </form>
+        </section>
+        <section id="login">
+            <h2>User Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <input type="submit" value="Login">
+            </form>
+        </section>
+        <section id="search">
+            <h2>Search Flights</h2>
+            <form id="searchForm">
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination" name="destination" required>
+                <br>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                <br>
+                <label for="class">Class:</label>
+                <select id="class" name="class" required>
+                    <option value="economy">Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+                </select>
+                <br>
+                <input type="submit" value="Search">
+            </form>
+            <div id="results"></div>
+        </section>
+        <section id="book">
+            <h2>Book Flight</h2>
+            <form id="bookingForm">
+                <label for="flight">Flight:</label>
+                <input type="text" id="flight" name="flight" required>
+                <br>
+                <label for="class">Class:</label>
+                <select id="class" name="class" required>
+                    <option value="economy">Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+                </select>
+                <br>
+                <label for="passengerName">Passenger Name:</label>
+                <input type="text" id="passengerName" name="passengerName" required>
+                <br>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                <br>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <br>
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="online">Online</option>
+                    <option value="offline">Offline</option>
+                </select>
+                <br>
+                <input type="submit" value="Book Flight">
+            </form>
+        </section>
+        <section id="bookings">
+            <h2>My Bookings</h2>
+            <div class="booking-list">
+                <div class="booking-item">
+                    <h3>Booking #12345</h3>
+                    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Flight Reservation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #005bb5;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, button {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Flight Reservation System</h1>
+    </header>
+    <nav>
+        <a href="search-flight.html">Search Flight</a>
+        <a href="book-ticket.html">Book Ticket</a>
+        <a href="my-ticket.html">My Ticket</a>
+        <a href="cancel-ticket.html">Cancel Ticket</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+    <div class="container">
+        <h2>Search for Flights</h2>
+        <form action="search-results.html" method="GET">
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+
+            <label for="departure-date">Departure Date:</label>
+            <input type="date" id="departure-date" name="departure_date" required>
+
+            <label for="class">Class:</label>
+            <select id="class" name="class" required>
+                <option value="economy">Economy</option>
+                <option value="business">Business</option>
+                <option value="first">First Class</option>
+            </select>
+
+            <button type="submit">Search Flights</button>
+        </form>
+    </div>
+    <footer>
+        <p style="text-align: center; padding: 1rem; color: #555;">&copy; 2024 Online Flight Reservation System</p>
+    </footer>
+</body>
+</html>
