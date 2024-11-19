@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MedCare Hospital Appointment System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        #doctors, #appointments {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for form submissions
+            document.getElementById('registerForm')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful registration
+                alert('Registration Successful!');
+                window.location.href = "#login";
+            });
+
+            document.getElementById('loginForm')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful login
+                alert('Login Successful!');
+                window.location.href = "#home";
+            });
+
+            document.getElementById('appointmentForm')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Simulate successful booking
+                alert('Appointment Booked Successfully!');
+                window.location.href = "#appointments";
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>MedCare Hospital Appointment System</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#doctors">Browse Doctors</a></li>
+                <li><a href="#appointments">My Appointments</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome to MedCare Hospital</h2>
+            <p>Your health is our priority. Book appointments with ease.</p>
+        </section>
+        <section id="register">
+            <h2>User Registration</h2>
+            <form id="registerForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <input type="submit" value="Register">
+            </form>
+        </section>
+        <section id="login">
+            <h2>User Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <input type="submit" value="Login">
+            </form>
+        </section>
+        <section id="doctors">
+            <h2>Browse Doctors</h2>
+            <div class="doctor-list">
+                <div class="doctor-item">
+                    <img src="images/doctor1.jpg" alt="Doctor 1">
+                    <h3>Dr. John Doe</h3>
+                    <p>Specialty: Cardiology</p>
+                    <button onclick="window.location.href='#book'">Book Appointment</button>
+                </div>
+                <div class="doctor-item">
+                    <img src="images/doctor2.jpg" alt="Doctor 2">
+                    <h3>Dr. Jane Smith</h3>
+                    <p>Specialty: Dermatology</p>
+                    <button onclick="window.location.href='#book'">Book Appointment</button>
+                </div>
+                <!-- Add more doctors as needed -->
+            </div>
+        </section>
+        <section id="book">
+            <h2>Book Appointment</h2>
+            <form id="appointmentForm">
+                <label for="doctor">Doctor:</label>
+                <select id="doctor" name="doctor" required>
+                    <option value="doctor1">Dr. John Doe</option>
+                    <option value="doctor2">Dr. Jane Smith</option>
+                    <!-- Add more doctors as needed -->
+                </select>
+                <br>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                <br>
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+                <br>
+                <input type="submit" value="Book Appointment">
+            </form>
+        </section>
+        <section id="appointments">
+            <h2>My Appointments</h2>
+            <p>View and manage your appointments here.</p>
+            <div class="appointment-list">
+                <p>Appointment with Dr. John Doe on 2024-12-01 at 10:00 AM</p>
+                <p>Appointment with Dr. Jane Smith on 2024-12-02 at 11:00 AM</p>
+                <!-- Add more appointments as needed -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 MedCare Hospital. All rights reserved.</p>
+    </footer>
+</body>
+</html>
