@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Management Information System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .dashboard {
+            margin: 20px 0;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group input, .form-group button {
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blood Management Information System</h1>
+    </header>
+    <div class="container">
+        <section class="dashboard" id="donorRecords">
+            <h2>Donor Records</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Blood Group</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody id="donorData"></tbody>
+            </table>
+        </section>
+        <section class="dashboard" id="adminDashboard">
+            <h2>Admin Dashboard</h2>
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Donor Name">
+                <input type="text" id="bloodGroup" placeholder="Blood Group">
+                <input type="text" id="location" placeholder="Location">
+                <button onclick="addDonor()">Add Donor</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Blood Group</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody id="adminData"></tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+        const donors = [
+            { name: 'John Doe', bloodGroup: 'A+', location: 'New York' },
+            { name: 'Jane Smith', bloodGroup: 'O-', location: 'California' }
+        ];
+
+        function displayDonors() {
+            const donorTable = document.getElementById('donorData');
+            const adminTable = document.getElementById('adminData');
+
+            donorTable.innerHTML = '';
+            adminTable.innerHTML = '';
+
+            donors.forEach(donor => {
+                const row = `<tr><td>${donor.name}</td><td>${donor.bloodGroup}</td><td>${donor.location}</td></tr>`;
+                donorTable.innerHTML += row;
+                adminTable.innerHTML += row;
+            });
+        }
+
+        function addDonor() {
+            const name = document.getElementById('name').value;
+            const bloodGroup = document.getElementById('bloodGroup').value;
+            const location = document.getElementById('location').value;
+            if (name && bloodGroup && location) {
+                donors.push({ name, bloodGroup, location });
+                alert('Donor added successfully!');
+                displayDonors();
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        window.onload = displayDonors;
+    </script>
+</body>
+</html>
