@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteOnline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .login-form, .voting-section, .confirmation-section {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .login-form input, .voting-section select, .confirmation-section button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VoteOnline</h1>
+        <p>Secure and User-Friendly E-Voting Platform</p>
+    </header>
+    <div class="container">
+        <section class="login-form" id="loginForm">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </section>
+
+        <section class="voting-section" id="votingSection" style="display:none;">
+            <h2>Cast Your Vote</h2>
+            <select id="candidates">
+                <option value="" disabled selected>Select a Candidate</option>
+                <option value="Candidate 1">Candidate 1</option>
+                <option value="Candidate 2">Candidate 2</option>
+                <option value="Candidate 3">Candidate 3</option>
+            </select>
+            <button onclick="castVote()">Submit Vote</button>
+        </section>
+
+        <section class="confirmation-section" id="confirmationSection" style="display:none;">
+            <h2>Vote Confirmation</h2>
+            <p id="confirmationMessage"></p>
+        </section>
+    </div>
+
+    <script>
+        function login() {
+            // Simplified login authentication
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username && password) {
+                alert('Multi-factor authentication completed');
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('votingSection').style.display = 'block';
+            } else {
+                alert('Please enter your username and password');
+            }
+        }
+
+        function castVote() {
+            const candidate = document.getElementById('candidates').value;
+            if (candidate) {
+                alert('Your vote is being encrypted and submitted securely');
+                document.getElementById('votingSection').style.display = 'none';
+                document.getElementById('confirmationSection').style.display = 'block';
+                document.getElementById('confirmationMessage').innerText = `You have successfully voted for ${candidate}.`;
+            } else {
+                alert('Please select a candidate to vote');
+            }
+        }
+    </script>
+</body>
+</html>
