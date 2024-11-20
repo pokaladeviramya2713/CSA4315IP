@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlossomGifts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #5e9ca0;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #3b6e70;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .product-list, .admin-actions {
+            margin: 20px 0;
+        }
+
+        .product-item {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+
+        .admin-actions input, .admin-actions button {
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BlossomGifts</h1>
+        <p>Your one-stop shop for flowers and gifts</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Categories</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section class="product-list">
+            <h2>Product Categories</h2>
+            <div id="products"></div>
+        </section>
+
+        <section class="admin-actions">
+            <h2>Admin Actions</h2>
+            <input type="text" id="itemName" placeholder="Item Name">
+            <input type="text" id="itemPrice" placeholder="Item Price">
+            <button onclick="addItem()">Add Item</button>
+            <button onclick="removeItem()">Remove Item</button>
+            <button onclick="modifyPrice()">Modify Price</button>
+            <button onclick="viewCustomers()">View Customers</button>
+        </section>
+    </div>
+
+    <script>
+        const products = [
+            { name: 'Rose Bouquet', price: '20' },
+            { name: 'Gift Basket', price: '30' }
+        ];
+
+        function displayProducts() {
+            const productContainer = document.getElementById('products');
+            productContainer.innerHTML = '';
+            products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'product-item';
+                productDiv.innerHTML = <h3>${product.name}</h3><p>Price: $${product.price}</p>;
+                productContainer.appendChild(productDiv);
+            });
+        }
+
+        function addItem() {
+            const name = document.getElementById('itemName').value;
+            const price = document.getElementById('itemPrice').value;
+            products.push({ name, price });
+            displayProducts();
+        }
+
+        function removeItem() {
+            const name = document.getElementById('itemName').value;
+            const index = products.findIndex(product => product.name === name);
+            if (index !== -1) {
+                products.splice(index, 1);
+            }
+            displayProducts();
+        }
+
+        function modifyPrice() {
+            const name = document.getElementById('itemName').value;
+            const newPrice = document.getElementById('itemPrice').value;
+            const product = products.find(product => product.name === name);
+            if (product) {
+                product.price = newPrice;
+            }
+            displayProducts();
+        }
+
+        function viewCustomers() {
+            alert('Viewing customer information is not implemented in this example.');
+        }
+
+        window.onload = displayProducts;
+    </script>
+</body>
+</html>
