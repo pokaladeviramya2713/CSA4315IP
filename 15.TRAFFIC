@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Squad: Penalty Collection & Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin: 20px 0;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group input, .form-group button {
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Traffic Squad: Penalty Collection & Management</h1>
+    </header>
+    <div class="container">
+        <section class="section" id="firSection">
+            <h2>Create FIR</h2>
+            <div class="form-group">
+                <input type="text" id="ownerName" placeholder="Vehicle Owner Name">
+                <input type="text" id="vehicleNumber" placeholder="Vehicle Number">
+                <input type="text" id="penaltyAmount" placeholder="Penalty Amount">
+                <input type="file" id="vehiclePhoto" placeholder="Upload Vehicle Photo">
+                <button onclick="createFIR()">Submit FIR</button>
+            </div>
+        </section>
+        <section class="section" id="penaltySection">
+            <h2>View Penalty</h2>
+            <input type="text" id="searchVehicle" placeholder="Enter Vehicle Number">
+            <button onclick="viewPenalty()">View Penalty</button>
+            <div id="penaltyDetails"></div>
+        </section>
+    </div>
+    <script>
+        const firRecords = [];
+
+        function createFIR() {
+            const ownerName = document.getElementById('ownerName').value;
+            const vehicleNumber = document.getElementById('vehicleNumber').value;
+            const penaltyAmount = document.getElementById('penaltyAmount').value;
+            const vehiclePhoto = document.getElementById('vehiclePhoto').files[0];
+            if (ownerName && vehicleNumber && penaltyAmount && vehiclePhoto) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    firRecords.push({
+                        ownerName,
+                        vehicleNumber,
+                        penaltyAmount,
+                        vehiclePhoto: e.target.result
+                    });
+                    alert('FIR Created Successfully');
+                };
+                reader.readAsDataURL(vehiclePhoto);
+            } else {
+                alert('Please fill in all fields and upload a photo');
+            }
+        }
+
+        function viewPenalty() {
+            const vehicleNumber = document.getElementById('searchVehicle').value;
+            const penaltyDetails = document.getElementById('penaltyDetails');
+            const record = firRecords.find(record => record.vehicleNumber === vehicleNumber);
+            if (record) {
+                penaltyDetails.innerHTML = `
+                    <table>
+                        <tr><th>Owner Name</th><td>${record.ownerName}</td></tr>
+                        <tr><th>Vehicle Number</th><td>${record.vehicleNumber}</td></tr>
+                        <tr><th>Penalty Amount</th><td>${record.penaltyAmount}</td></tr>
+                        <tr><th>Vehicle Photo</th><td><img src="${record.vehiclePhoto}" alt="Vehicle Photo" width="200"></td></tr>
+                    </table>
+                `;
+            } else {
+                penaltyDetails.innerHTML = 'No record found';
+            }
+        }
+    </script>
+</body>
+</html>
