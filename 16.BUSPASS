@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Pass Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group input, .form-group select, .form-group button {
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bus Pass Management System</h1>
+    </header>
+    <div class="container">
+        <section class="form-section">
+            <h2>Create Bus Pass</h2>
+            <div class="form-group">
+                <label for="userType">User Type</label>
+                <select id="userType">
+                    <option value="student">Student</option>
+                    <option value="working">Working</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="Enter Address">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob">
+            </div>
+            <div class="form-group">
+                <label for="email">Email ID</label>
+                <input type="email" id="email" placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+                <label for="schoolOrOrg">School/Organization</label>
+                <input type="text" id="schoolOrOrg" placeholder="Enter School/Organization Name">
+            </div>
+            <div class="form-group">
+                <label for="validity">Validity Period</label>
+                <input type="number" id="validity" placeholder="Enter Validity Period (months)">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount Paid</label>
+                <input type="number" id="amount" placeholder="Enter Amount (0 if free)">
+            </div>
+            <div class="form-group">
+                <label for="photo">Photograph</label>
+                <input type="file" id="photo">
+            </div>
+            <div class="form-group">
+                <button onclick="createBusPass()">Create Bus Pass</button>
+            </div>
+        </section>
+
+        <section class="renewal-section">
+            <h2>Renew Bus Pass</h2>
+            <div class="form-group">
+                <label for="renewName">Name</label>
+                <input type="text" id="renewName" placeholder="Enter Name for Renewal">
+            </div>
+            <div class="form-group">
+                <label for="renewValidity">Renewal Period</label>
+                <input type="number" id="renewValidity" placeholder="Enter Renewal Period (months)">
+            </div>
+            <div class="form-group">
+                <button onclick="renewBusPass()">Renew Bus Pass</button>
+            </div>
+        </section>
+
+        <section class="bus-pass-list">
+            <h2>Bus Passes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Date of Birth</th>
+                        <th>Email ID</th>
+                        <th>School/Organization</th>
+                        <th>Validity Period</th>
+                        <th>Amount Paid</th>
+                        <th>Photograph</th>
+                    </tr>
+                </thead>
+                <tbody id="busPassList"></tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+        const busPasses = [];
+
+        function createBusPass() {
+            const userType = document.getElementById('userType').value;
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const dob = document.getElementById('dob').value;
+            const email = document.getElementById('email').value;
+            const schoolOrOrg = document.getElementById('schoolOrOrg').value;
+            const validity = document.getElementById('validity').value;
+            const amount = document.getElementById('amount').value;
+            const photo = document.getElementById('photo').files[0];
+
+            if (name && address && dob && email && schoolOrOrg && validity && amount !== '') {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    busPasses.push({
+                        userType,
+                        name,
+                        address,
+                        dob,
+                        email,
+                        schoolOrOrg,
+                        validity,
+                        amount,
+                        photo: e.target.result
+                    });
+                    displayBusPasses();
+                    alert('Bus Pass Created Successfully');
+                };
+                reader.readAsDataURL(photo);
+            } else {
+                alert('Please fill in all fields and upload a photo');
+            }
+        }
+
+        function renewBusPass() {
+            const renewName = document.getElementById('renewName').value;
+            const renewValidity = document.getElementById('renewValidity').value;
+            const busPass = busPasses.find(pass => pass.name === renewName);
+
+            if (busPass && renewValidity) {
+                busPass.validity = parseInt(busPass.validity) + parseInt(renewValidity);
+                busPass.amount += busPass.amount; // Adjust this logic based on actual amount calculation
+                displayBusPasses();
+                alert('Bus Pass Renewed Successfully');
+            } else {
+                alert('Bus Pass not found or invalid renewal period');
+            }
+        }
+
+        function displayBusPasses() {
+            const busPassList = document.getElementById('busPassList');
+            busPassList.innerHTML = '';
+            busPasses.forEach(pass => {
+                const row = `<tr>
+                    <td>${pass.name}</td>
+                    <td>${pass.address}</td>
+                    <td>${pass.dob}</td>
+                    <td>${pass.email}</td>
+                    <td>${pass.schoolOrOrg}</td>
+                    <td>${pass.validity}</td>
+                    <td>${pass.amount}</td>
+                    <td><img src="${pass.photo}" alt="Photo" width="50"></td>
+                </tr>`;
+                busPassList.innerHTML += row;
+            });
+        }
+    </script>
+</body>
+</html>
