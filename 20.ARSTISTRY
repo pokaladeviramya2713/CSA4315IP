@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtistryHub - Emily Harris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header, nav, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin: 20px 0;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+        }
+        .bio, .portfolio, .blog, .store, .contact {
+            margin-top: 20px;
+        }
+        .portfolio img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .blog-post, .product {
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form textarea, form button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ArtistryHub - Emily Harris</h1>
+        <p>Celebrating the artistic journey of Emily Harris</p>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#bio">Biography</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#blog">Blog</a>
+        <a href="#store">Store</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="home" class="section gallery">
+            <h2>Gallery</h2>
+            <img src="artwork1.jpg" alt="Artwork 1">
+            <img src="artwork2.jpg" alt="Artwork 2">
+            <img src="artwork3.jpg" alt="Artwork 3">
+        </section>
+        <section id="bio" class="section bio">
+            <h2>Biography</h2>
+            <p>Emily Harris is a renowned artist known for her unique style and captivating artworks. She has exhibited her work in numerous galleries and has won several awards throughout her career.</p>
+            <p>Career Milestones:</p>
+            <ul>
+                <li>Exhibition at XYZ Gallery - 2020</li>
+                <li>Awarded Best Artist of the Year - 2019</li>
+                <li>Solo Exhibition at ABC Museum - 2018</li>
+            </ul>
+        </section>
+        <section id="portfolio" class="section portfolio">
+            <h2>Portfolio</h2>
+            <img src="portfolio1.jpg" alt="Portfolio Artwork 1">
+            <img src="portfolio2.jpg" alt="Portfolio Artwork 2">
+            <img src="portfolio3.jpg" alt="Portfolio Artwork 3">
+            <p>Description of the artworks.</p>
+        </section>
+        <section id="blog" class="section blog">
+            <h2>Blog</h2>
+            <div class="blog-post">
+                <h3>Recent Project</h3>
+                <p>Details about the recent project and upcoming events.</p>
+            </div>
+            <div class="blog-post">
+                <h3>Upcoming Exhibition</h3>
+                <p>Information about the upcoming exhibition.</p>
+            </div>
+        </section>
+        <section id="store" class="section store">
+            <h2>Store</h2>
+            <div class="product">
+                <h3>Print of Artwork 1</h3>
+                <p>Price: $50</p>
+                <button>Buy Now</button>
+            </div>
+            <div class="product">
+                <h3>Print of Artwork 2</h3>
+                <p>Price: $60</p>
+                <button>Buy Now</button>
+            </div>
+        </section>
+        <section id="contact" class="section contact">
+            <h2>Contact</h2>
+            <form>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="button" onclick="sendMessage()">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 ArtistryHub. All rights reserved.</p>
+    </footer>
+    <script>
+        function sendMessage() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            if (name && email && message) {
+                alert('Message sent successfully!');
+                document.querySelector('form').reset();
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+    </script>
+</body>
+</html>
