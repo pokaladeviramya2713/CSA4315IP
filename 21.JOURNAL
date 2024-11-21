@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IJSSE - Scopus Indexed Journal</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0056b3;
+        }
+
+        a:hover {
+            color: #ff6f61;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            color: white;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header, footer {
+                text-align: center;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">IJSSE</div>
+        <nav>
+            <a href="#about">About Journal</a>
+            <a href="#authors">For Authors</a>
+            <a href="#reviewers">For Reviewers</a>
+            <a href="#editors">For Editors</a>
+            <a href="#register">Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <h2>About Journal</h2>
+            <p>The International Journal of Scientific and Social Excellence (IJSSE) is a Scopus-indexed journal publisher committed to advancing academic research. Our mission encompasses facilitating excellence in scientific and social research while ensuring global visibility for researchers. The journal is identified by its print ISSN 2395-1443 and online ISSN 2395-1451.</p>
+        </section>
+
+        <section id="authors" class="section">
+            <h2>For Authors</h2>
+            <p>Authors can submit manuscripts, track submission status, and access detailed guidelines to ensure their research aligns with IJSSE's publication standards.</p>
+        </section>
+
+        <section id="reviewers" class="section">
+            <h2>For Reviewers</h2>
+            <p>Reviewers are equipped with tools to review submissions effectively and access resources tailored to their roles in the peer-review process.</p>
+        </section>
+
+        <section id="editors" class="section">
+            <h2>For Editors</h2>
+            <p>Editors can manage submissions, coordinate peer reviews, and oversee the publication process through an intuitive dashboard.</p>
+        </section>
+
+        <section id="register" class="section">
+            <h2>Register</h2>
+            <p>Register as an author, reviewer, or editor to ensure seamless communication and workflow within the IJSSE system.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 International Journal of Scientific and Social Excellence (IJSSE). All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
