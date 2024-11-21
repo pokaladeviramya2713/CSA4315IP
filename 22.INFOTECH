@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ram Infotech</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header, nav, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin: 20px 0;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group input, .form-group button, .form-group select {
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ram Infotech</h1>
+        <p>Your one-stop shop for laptops and services</p>
+    </header>
+    <nav>
+        <a href="#onlineStore">Online Store</a>
+        <a href="#serviceCenter">Service Center</a>
+        <a href="#aboutUs">About Us</a>
+        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+    </nav>
+    <div class="container">
+        <section id="onlineStore" class="section">
+            <h2>Online Store</h2>
+            <div class="form-group">
+                <input type="text" id="search" placeholder="Search for laptops...">
+                <button onclick="searchLaptops()">Search</button>
+            </div>
+            <table id="laptopTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Specifications</th>
+                        <th>Price</th>
+                        <th>Reviews</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <section id="serviceCenter" class="section">
+            <h2>Service Center</h2>
+            <div class="form-group">
+                <input type="text" id="serviceName" placeholder="Your Name">
+                <input type="text" id="serviceEmail" placeholder="Your Email">
+                <input type="text" id="serviceIssue" placeholder="Describe your issue">
+                <button onclick="scheduleRepair()">Schedule Repair</button>
+            </div>
+            <h3>Track Service Status</h3>
+            <div class="form-group">
+                <input type="text" id="trackId" placeholder="Enter your service ID">
+                <button onclick="trackService()">Track</button>
+            </div>
+            <h3>Troubleshooting Guides</h3>
+            <div id="guides">
+                <p><strong>Guide 1:</strong> How to fix common laptop issues.</p>
+                <p><strong>Guide 2:</strong> Tips for maintaining your laptop.</p>
+                <p><strong>Guide 3:</strong> How to extend the battery life of your laptop.</p>
+            </div>
+        </section>
+        <section id="aboutUs" class="section">
+            <h2>About Us</h2>
+            <p>Ram Infotech has been a leader in the laptop sales and service industry for over 20 years. Our mission is to provide high-quality products and exceptional customer service. We strive to ensure that our customers have the best possible experience, whether they are purchasing a new laptop or having their existing one serviced.</p>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need support, please contact us:</p>
+            <p>Email: support@raminfotech.com</p>
+            <p>Phone: 1-800-123-4567</p>
+        </section>
+        <section id="faq" class="section">
+            <h2>Frequently Asked Questions</h2>
+            <h3>What is the warranty period for your laptops?</h3>
+            <p>All our laptops come with a one-year warranty that covers hardware defects.</            <h3>Do you offer international shipping?</h3>
+            <p>Yes, we offer international shipping to many countries. Please check our shipping policy for more details.</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Ram Infotech. All rights reserved.</p>
+    </footer>
+    <script>
+        const laptops = [
+            { name: 'Laptop A', specs: 'Intel i5, 8GB RAM, 256GB SSD', price: '$800', reviews: '★★★★☆' },
+            { name: 'Laptop B', specs: 'Intel i7, 16GB RAM, 512GB SSD', price: '$1200', reviews: '★★★★★' },
+            { name: 'Laptop C', specs: 'AMD Ryzen 5, 8GB RAM, 1TB HDD', price: '$700', reviews: '★★★☆☆' },
+            { name: 'Laptop D', specs: 'Intel i3, 4GB RAM, 128GB SSD', price: '$500', reviews: '★★★☆☆' }
+        ];
+
+        function searchLaptops() {
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+            const resultsTable = document.getElementById('laptopTable').getElementsByTagName('tbody')[0];
+            resultsTable.innerHTML = '';
+
+            const filteredLaptops = laptops.filter(laptop =>
+                laptop.name.toLowerCase().includes(searchQuery) ||
+                laptop.specs.toLowerCase().includes(searchQuery)
+            );
+
+            if (filteredLaptops.length > 0) {
+                filteredLaptops.forEach(laptop => {
+                    const row = `<tr>
+                                    <td>${laptop.name}</td>
+                                    <td>${laptop.specs}</td>
+                                    <td>${laptop.price}</td>
+                                    <td>${laptop.reviews}</td>
+                                </tr>`;
+                    resultsTable.innerHTML += row;
+                });
+            } else {
+                resultsTable.innerHTML = '<tr><td colspan="4">No laptops found</td></tr>';
+            }
+        }
+
+        function scheduleRepair() {
+            const name = document.getElementById('serviceName').value;
+            const email = document.getElementById('serviceEmail').value;
+            const issue = document.getElementById('serviceIssue').value;
+            if (name && email && issue) {
+                alert('Repair scheduled successfully!');
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function trackService() {
+            const trackId = document.getElementById('trackId').value;
+            if (trackId) {
+                alert('Tracking status for service ID: ' + trackId);
+            } else {
+                alert('Please enter your service ID');
+            }
+        }
+    </script>
+</body>
+</html>
