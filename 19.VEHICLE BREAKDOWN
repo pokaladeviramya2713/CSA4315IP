@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Road Vehicle Breakdown Assistance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group input, .form-group button {
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>On Road Vehicle Breakdown Assistance</h1>
+        <p>Find licensed mechanics near your location</p>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Search for Mechanics</h2>
+            <div class="form-group">
+                <input type="text" id="location" placeholder="Enter your location">
+                <button onclick="searchMechanics()">Search</button>
+            </div>
+            <table id="mechanicTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>License Number</th>
+                        <th>Location</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+        const mechanics = [
+            { name: 'Mike Johnson', license: 'LIC12345', location: 'New York', contact: '555-1234' },
+            { name: 'Sarah Williams', license: 'LIC54321', location: 'Los Angeles', contact: '555-5678' },
+            { name: 'James Brown', license: 'LIC67890', location: 'Chicago', contact: '555-8765' },
+            { name: 'Patricia Miller', license: 'LIC09876', location: 'Houston', contact: '555-3456' }
+        ];
+
+        function searchMechanics() {
+            const location = document.getElementById('location').value.toLowerCase();
+            const resultsTable = document.getElementById('mechanicTable').getElementsByTagName('tbody')[0];
+            resultsTable.innerHTML = '';
+
+            const filteredMechanics = mechanics.filter(mechanic =>
+                mechanic.location.toLowerCase().includes(location)
+            );
+
+            if (filteredMechanics.length > 0) {
+                filteredMechanics.forEach(mechanic => {
+                    const row = `<tr>
+                                    <td>${mechanic.name}</td>
+                                    <td>${mechanic.license}</td>
+                                    <td>${mechanic.location}</td>
+                                    <td>${mechanic.contact}</td>
+                                </tr>`;
+                    resultsTable.innerHTML += row;
+                });
+                alert('Mechanics found!');
+            } else {
+                alert('No mechanics found in your location');
+            }
+        }
+    </script>
+</body>
+</html>
