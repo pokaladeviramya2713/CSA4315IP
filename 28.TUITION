@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnWell Tuition Centre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LearnWell Tuition Centre</h1>
+        <p>Keeping the community informed and managing tuition services efficiently</p>
+    </header>
+    <nav>
+        <a href="#announcements">Announcements</a>
+        <a href="#course-offerings">Course Offerings</a>
+        <a href="#online-registration">Online Registration</a>
+        <a href="#maintenance-requests">Maintenance Requests</a>
+        <a href="#about-us">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="announcements" class="section">
+            <h2>Announcements</h2>
+            <p>Updates on class schedules, special events, and important notices will be posted here.</p>
+        </section>
+        <section id="course-offerings" class="section">
+            <h2>Course Offerings</h2>
+            <p>Details about available subjects, schedules, and fees will be listed here.</p>
+        </section>
+        <section id="online-registration" class="section">
+            <h2>Online Registration</h2>
+            <p>Enroll in classes and manage student profiles here.</p>
+        </section>
+        <section id="maintenance-requests" class="section">
+            <h2>Maintenance Requests</h2>
+            <p>Report issues or request assistance here.</p>
+        </section>
+        <section id="about-us" class="section">
+            <h2>About Us</h2>
+            <p>Learn about our mission and teaching staff here.</p>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>Get in touch with us for inquiries and support here.</p>
+        </section>
+    </div>
+</body>
+</html>
